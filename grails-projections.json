@@ -1,19 +1,10 @@
 {
-        "src/groovy/*.groovy" : {
-                "type" : "groovy",
-                "alternate" : "test/unit/{}Spec.groovy"
-        },
-
-        "src/java/*.java" : {
-                "type" : "java",
-                "alternate" : "test/unit/{}Spec.groovy"
-        },
-
         "grails-app/controllers/*.groovy" :  { 
                 "type" : "controller",
                 "alternate" : [ 
                         "test/unit/{}Spec.groovy",
-                        "test/functional/{}FunctionalSpec.groovy"
+                        "test/functional/{}FunctionalSpec.groovy",
+                        "test/functional/{}FunctionalTest.groovy"
                 ]
         },
 
@@ -43,14 +34,29 @@
                 "dispatch" : "jenv exec grails -plain-output test-app unit:{}"
         },
 
-        "test/integration/*Spec.groovy" : {
+        "test/integration/*IntegrationSpec.groovy" : {
                 "type" : "integration",
                 "dispatch" : "jenv exec grails -plain-output test-app integration:{}"
         },
 
-        "test/functional/*Spec.groovy" : {
+        "test/functional/*FunctionalSpec.groovy" : {
                 "type" : "functional",
                 "dispatch" : "jenv exec grails -plain-output test-app functional:{}"
+        },
+
+        "test/functional/*FunctionalTest.groovy" : {
+                "type" : "functional",
+                "dispatch" : "jenv exec grails -plain-output test-app functional:{}"
+        },
+        
+        "*.groovy" : {
+                "type" : "groovy",
+                "alternate" : "test/unit/{}Spec.groovy"
+        },
+
+        "*.java" : {
+                "type" : "java",
+                "alternate" : "test/unit/{}Spec.groovy"
         },
 
         "*" : {
