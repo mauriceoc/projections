@@ -1,0 +1,60 @@
+{
+        "src/groovy/*.groovy" : {
+                "type" : "groovy",
+                "alternate" : "test/unit/{}Spec.groovy"
+        },
+
+        "src/java/*.java" : {
+                "type" : "java",
+                "alternate" : "test/unit/{}Spec.groovy"
+        },
+
+        "grails-app/controllers/*.groovy" :  { 
+                "type" : "controller",
+                "alternate" : [ 
+                        "test/unit/{}Spec.groovy",
+                        "test/functional/{}FunctionalSpec.groovy"
+                ]
+        },
+
+        "grails-app/services/*.groovy" :  { 
+                "type" : "service",
+                "alternate" : [ 
+                        "test/unit/{}Spec.groovy",
+                        "test/integration/{}IntegrationSpec.groovy"
+                ]
+        },
+
+        "grails-app/domain/*.groovy" :  { 
+                "type" : "domain",
+                "alternate" : "test/unit/{}Spec.groovy"
+        },
+
+        "grails-app/conf/*.groovy" :  { 
+                "type" : "config" 
+        },
+
+        "grails-app/view/*.gsp" :  { 
+                "type" : "view" 
+        },
+
+        "test/unit/*Spec.groovy" : {
+                "type" : "unit",
+                "dispatch" : "jenv exec grails -plain-output test-app unit:{}"
+        },
+
+        "test/integration/*Spec.groovy" : {
+                "type" : "integration",
+                "dispatch" : "jenv exec grails -plain-output test-app integration:{}"
+        },
+
+        "test/functional/*Spec.groovy" : {
+                "type" : "functional",
+                "dispatch" : "jenv exec grails -plain-output test-app functional:{}"
+        },
+
+        "*" : {
+                "start" : "jenv exec grails run-app",
+                "console" : "jenv exec grails"
+        }
+}
